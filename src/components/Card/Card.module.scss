@@ -1,0 +1,314 @@
+@font-face {
+    font-family: 'Exo-Thin';
+    src: url('../../../public/fonts/Exo2.0-Thin.otf') format('woff');
+}
+@font-face {
+    font-family: 'Trebuchet MS';
+    src: url('../../../public/fonts/trebuchetms.ttf') format('ttf');
+}
+
+$defaultBlueColor: #1698D9;
+$hoverDefaultBlueColor: #2EA8E6;
+$selectedPinkColor: #D91667;
+$hoverSelectedPinkColor: #E52E7A;
+
+@mixin cardContainer {
+    position:relative;
+    width: 320px;
+    height: 477px;
+    border-radius: 10px;
+    padding-left: 48px;
+    padding-top: 19px;
+    box-sizing: border-box;
+    background-color: #F2F2F2;
+    background-image: url("../../../public/images/img.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%, 0 10%);
+}
+@mixin cardTitle {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+    color: #666666;
+}
+@mixin cardName {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 56px;
+}
+@mixin cardTaste {
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+}
+@mixin cardPortions {
+    margin-top: 15px;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+@mixin cardMouse {
+    max-width: 133px;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+@mixin cardKgInfo {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    bottom: 16px;
+    right: 16px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: end;
+    font-family: 'Trebuchet MS', sans-serif;
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 30px;
+    color: #FFFFFF;
+}
+
+.card {
+    font-family: 'Exo-Thin', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    //height: 100vh;
+    //width: 100%;
+
+    .card-description {
+        color: white;
+        font-family: 'Trebuchet MS', sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 15px;
+        text-align: center;
+    }
+
+    .card-description p {
+        color: white;
+        font-family: 'Trebuchet MS', sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 15px;
+        text-align: center;
+        margin: 0;
+    }
+
+    .card-description a {
+        color: #22A7E9;
+        border-bottom: 1px dashed;
+        text-decoration: none;
+    }
+
+    .card-description span {
+        color: #22A7E9;
+    }
+
+
+    // default state
+
+    .card-container-default {
+        @include cardContainer;
+        border: 4px solid $defaultBlueColor;
+
+        .card-title {
+            @include cardTitle;
+        }
+
+        .card-name {
+            @include cardName;
+            color: #000000;
+        }
+
+        .card-taste-info {
+            @include cardTaste;
+            color: #000000;
+        }
+
+        .card-portions-count  {
+            @include cardPortions;
+            color: #666666;
+        }
+
+        .card-mouse-count {
+            @include cardMouse;
+            color: #666666;
+        }
+
+        .card-kg-info {
+            background-color: $defaultBlueColor;
+            @include cardKgInfo;
+        }
+
+        .card-kg-info span {
+            font-family: 'Trebuchet MS', sans-serif;
+            font-weight: 400;
+            font-size: 21px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+    }
+    .card-container-default:before {
+        position: absolute;
+        content: '';
+        width: 60px;
+        height: 60px;
+        border: 4px solid $defaultBlueColor;
+        left: -37px;
+        top: -34px;
+        transform: rotate(45deg);
+    }
+    .card-container-default:hover {
+        border-color: $hoverDefaultBlueColor;
+        cursor: pointer;
+    }
+    .card-container-default:hover .card-kg-info {
+        background-color: $hoverDefaultBlueColor;
+    }
+
+
+    // selected state
+
+    .card-container-selected {
+        border: 4px solid #D91667;
+        @include cardContainer;
+
+        .card-kg-info-selected {
+            background-color: #D91667;
+            @include cardKgInfo;
+
+            span {
+                font-family: 'Trebuchet MS', sans-serif;
+                font-weight: 400;
+                font-size: 21px;
+                text-align: center;
+                color: #FFFFFF;
+            }
+        }
+
+        .card-title {
+            @include cardTitle;
+        }
+        .card-title span {
+            color: #E62E7A;
+        }
+        .card-name {
+            @include cardName;
+            color: #000000;
+        }
+        .card-taste-info {
+            @include cardTaste;
+            color: #000000;
+        }
+        .card-portions-count  {
+            @include cardPortions;
+            color: #666666;
+        }
+        .card-mouse-count {
+            @include cardMouse;
+            color: #666666;
+        }
+    }
+    .card-container-selected:before {
+        position: absolute;
+        content: '';
+        width: 60px;
+        height: 60px;
+        border: 4px solid #D91667;
+        left: -37px;
+        top: -34px;
+        transform: rotate(45deg);
+    }
+    .card-container-selected:hover {
+        border-color: #E52E7A;
+        cursor: pointer;
+    }
+    .card-container-selected:hover .card-kg-info-selected {
+        background-color: #E52E7A;
+    }
+
+
+    // disabled state
+
+    .card-container-disabled {
+        @include cardContainer;
+        border: 4px solid #B3B3B3;
+        filter: contrast(0.5);
+
+        .card-title {
+            @include cardTitle;
+            color: #B3B3B3;
+        }
+        .card-name {
+            @include cardName;
+            color: #B3B3B3;
+        }
+        .card-taste-info{
+            @include cardTaste;
+            color: #B3B3B3;
+        }
+        .card-portions-count  {
+            @include cardPortions;
+            color: #B3B3B3;
+        }
+        .card-mouse-count {
+            @include cardMouse;
+            color: #B3B3B3;
+        }
+        .card-kg-info {
+            background-color: #B3B3B3;
+            @include cardKgInfo;
+        }
+        .card-kg-info span {
+            font-family: 'Trebuchet MS', sans-serif;
+            font-weight: 400;
+            font-size: 21px;
+            text-align: center;
+            color: #FFFFFF;
+        }
+    }
+    .card-container-disabled:before {
+        position: absolute;
+        content: '';
+        width: 60px;
+        height: 60px;
+        border: 4px solid #B3B3B3;
+        left: -37px;
+        top: -34px;
+        transform: rotate(45deg);
+    }
+    .card-container-disabled:hover {
+        cursor: not-allowed;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
